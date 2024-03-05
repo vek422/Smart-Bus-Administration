@@ -1,10 +1,11 @@
-import { RegisterForm } from "./Forms/RegisterForm";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import DashBoard from "./pages/Dashboard/Dashboard";
+
 export default function App() {
   return (
     <>
-      <RegisterForm />
+      {/* <TabsLayout /> */}
+      <DashBoard />
+      {/* <RegisterForm /> */}
       {/* <Login /> */}
       {/* <Register /> */}
     </>

@@ -1,5 +1,3 @@
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import ToggleThemeButton from "@/components/ui/ToggleThemeButton";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +15,7 @@ export default function Login() {
             </p>
           </div>
           <div className="w-1/12">
-            <ToggleThemeButton />
+            <ToggleThemeButton rounded />
           </div>
         </div>
         <LoginForm />

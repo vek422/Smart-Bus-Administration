@@ -10,11 +10,13 @@ import { ThemeProvider } from "./components/theme-provider.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/Login/index.tsx";
 import Register from "./pages/Register/index.tsx";
+import DashBoard from "./pages/Dashboard/Dashboard.tsx";
+import Users from "./pages/Users/index.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <DashBoard />,
   },
   {
     path: "/auth/login",
@@ -23,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/auth/register",
     element: <Register />,
+  },
+  {
+    path: "/users",
+    element: <Users />,
   },
 ]);
 
