@@ -42,7 +42,7 @@ export default function DashBoard() {
               value="overview"
               className="p-2  overflow-hidden grid grid-cols-3 gap-4"
             >
-              <div className="grid grid-rows-3 gap-2">
+              <div className="grid grid-rows-3 gap-4">
                 <StatCard
                   cardTitle1={"Total Passengers"}
                   cardStat1={4500}

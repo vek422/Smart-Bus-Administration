@@ -26,9 +26,9 @@ export default function Nav() {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
-            <NavigationMenuItem>
+            <NavigationMenuItem className="">
               <NavigationMenuTrigger>Users</NavigationMenuTrigger>
-              <NavigationMenuContent>
+              <NavigationMenuContent className="">
                 <ul className="p-6 w-[400px]">
                   <ListItem href="/users" title="View Users">
                     Information about Users, Pass Details, Travel Logs

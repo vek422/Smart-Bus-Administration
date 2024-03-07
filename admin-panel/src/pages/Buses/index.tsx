@@ -1,45 +1,41 @@
+import BusListCard from "@/components/BusListCard";
 import Nav from "@/components/Nav";
 import { SideNav } from "@/components/SideNav";
-import UserListcard from "@/components/UserListCard";
-
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { Search, Ticket, UserRoundCheck, Users2 } from "lucide-react";
-import UserInformation from "./UserInformationCard";
+import {
+  Bus,
+  CheckCircle,
+  Construction,
+  Search,
+} from "lucide-react";
 import { useState } from "react";
-export default function Users() {
+import BusInformationCard from "./BusInformationCard";
+export default function Buses() {
   const [selected, setSelected] = useState(0);
   const links = [
     {
-      title: "All Users",
+      title: "All Buses",
       label: "",
-      icon: Users2,
+      icon: Bus,
       onClick: function () {
         setSelected(0);
       },
     },
     {
-      title: "Active Users",
+      title: "Working Buses",
       label: "",
-      icon: UserRoundCheck,
+      icon: CheckCircle,
       onClick: function () {
         setSelected(1);
       },
     },
     {
-      title: "Users With Pass",
+      title: "Under Maintainance",
       label: "",
-      icon: Ticket,
+      icon: Construction,
       onClick: function () {
         setSelected(2);
-      },
-    },
-    {
-      title: "User Approvals",
-      label: "",
-      icon: Users2,
-      onClick: function () {
-        setSelected(3);
       },
     },
   ];
@@ -64,12 +60,12 @@ export default function Users() {
           {/* <Separator className="w-[80%] mx-auto" /> */}
           <div className="p-2 flex flex-col h-full gap-2 overflow-scroll no-scrollbar">
             {[...new Array(100)].map(() => (
-              <UserListcard />
+              <BusListCard />
             ))}
           </div>
         </div>
         <div className="w-5/12 border flex flex-col gap-5 items-center p-2 justify-center">
-          <UserInformation />
+          <BusInformationCard />
         </div>
       </div>
     </div>
