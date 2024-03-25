@@ -14,6 +14,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
+import { BACKEND_BASE_URL } from "../service";
+import { toast } from "sonner";
 const formSchema = z.object({
   name: z.string().min(3, { message: "Name is Too Short" }),
   gender: z.enum(["male", "female", "other"], {
@@ -22,11 +24,8 @@ const formSchema = z.object({
   age: z.coerce.number().int().min(1, { message: "Invalid Age" }),
   boardingPoint: z.string().min(3, { message: "City Name is too short" }),
   pAddress: z.string().min(5, { message: "Address is too short" }),
-  contactNumber: z.coerce
-    .number()
-    .int()
-    .min(100000000, { message: "Invalid Number" })
-    .max(999999999, { message: "Invalid Number" }),
+  uid: z.string().min(4, { message: "UID is too short" }),
+  contactNumber: z.coerce.number().int(),
   email: z.string().email("Invalid Email"),
 });
 
@@ -42,8 +41,21 @@ export default function AddUserForm() {
       contactNumber: undefined,
     },
   });
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+    const res = await fetch(`${BACKEND_BASE_URL}/user/add`, {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    });
+
+    const resJson = await res.json();
+    console.log(resJson);
+    if (res.status == 201) {
+      toast("User Created Successfully");
+    } else {
+      toast(resJson.message);
+    }
   }
   return (
     <Form {...form}>
@@ -61,6 +73,20 @@ export default function AddUserForm() {
                 <Input placeholder="Name" {...field} />
               </FormControl>
               <FormDescription></FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="uid"
+          render={({ field }) => (
+            <FormItem className="w-1/2">
+              <FormLabel>UID</FormLabel>
+              <FormControl>
+                <Input placeholder="UID" {...field} />
+              </FormControl>
+              <FormDescription>UID of RFID card</FormDescription>
               <FormMessage />
             </FormItem>
           )}

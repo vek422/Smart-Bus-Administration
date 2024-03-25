@@ -1,6 +1,8 @@
 import { TooltipProvider } from "../../components/ui/tooltip";
 import Nav from "../../components/Nav";
 import TimeWidget from "../../components/TimeWidget";
+import { socket } from "@/socket";
+
 import {
   Tabs,
   TabsContent,
@@ -18,7 +20,26 @@ import {
 } from "../../components/ui/card";
 import BusDataCard from "../../components/BusDataCard";
 import StudentLogCard from "../../components/StudentLogCard";
+import { useEffect } from "react";
+const routes = [
+  "Shirdi",
+  "Kopargaon",
+  "Rahata",
+  "Sangamener",
+  "Yeola",
+  "Manmad",
+  "Yesgaon",
+  "Sinner",
+  "Rahuri",
+  "Kolapewade",
+];
+
 export default function DashBoard() {
+  console.log(socket);
+  socket.emit("chat message", "hello");
+  socket.on("chat message", (msg) => {
+    console.log("New Message ", msg);
+  });
   return (
     <TooltipProvider delayDuration={0}>
       <div className="h-screen flex flex-col gap-2 w-full overflow-hidden">
@@ -70,12 +91,14 @@ export default function DashBoard() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-col gap-2 h-[60vh] overflow-scroll  no-scrollbar">
-                  <BusDataCard
-                    busId={"B0PP"}
-                    source={"Shirdi"}
-                    destination={"Kopargaon"}
-                    startTime={"9:40"}
-                  />
+                  {[...new Array(10)].map((i, key) => (
+                    <BusDataCard
+                      busId={`BS0${key}`}
+                      source={routes[key]}
+                      destination={routes[9 - key]}
+                      startTime={"9:40"}
+                    />
+                  ))}
                 </CardContent>
               </Card>
               <Card>
@@ -86,11 +109,13 @@ export default function DashBoard() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-col gap-2 h-[60vh] overflow-scroll  no-scrollbar">
-                  <StudentLogCard
-                    studId={"ST01"}
-                    location={"Kopargaon"}
-                    time={"9:40"}
-                  />
+                  {[...new Array(10)].map((i, key) => (
+                    <StudentLogCard
+                      studId={"ST01"}
+                      location={`Student 0${key}`}
+                      time={"9:40"}
+                    />
+                  ))}
                 </CardContent>
               </Card>
             </TabsContent>

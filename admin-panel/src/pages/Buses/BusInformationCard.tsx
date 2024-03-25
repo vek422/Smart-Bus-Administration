@@ -14,8 +14,23 @@ export default function BusInformationCard() {
           <p className="">BS001</p>
         </div>
         <div>
-          <Label>Capacity</Label>
+          <Label className="text-md">Capacity</Label>
+          <p>60</p>
         </div>
+        <div>
+          <Label className="text-md">Route</Label>
+          <p>Shirdi</p>
+        </div>
+        <div>
+          <Label className="text-md">Driver Information</Label>
+          <br />
+          <Label>Driver Name</Label>
+          <p>Devang Kolhe</p>
+          <Label>Age</Label>
+          <br />
+          <p>43</p>
+        </div>
+        <div></div>
       </CardContent>
     </Card>
   );

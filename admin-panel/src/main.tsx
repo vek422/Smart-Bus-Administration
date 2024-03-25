@@ -14,6 +14,7 @@ import DashBoard from "./pages/Dashboard/Dashboard.tsx";
 import Users from "./pages/Users/index.tsx";
 import Buses from "./pages/Buses/index.tsx";
 import AddUser from "./pages/AddUser/index.tsx";
+import { Toaster } from "./components/ui/sonner.tsx";
 
 const router = createBrowserRouter([
   {
@@ -43,9 +44,10 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <RouterProvider router={router} />
-    </ThemeProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <RouterProvider router={router} />
+    <Toaster />
+  </ThemeProvider>
+  // </React.StrictMode>
 );

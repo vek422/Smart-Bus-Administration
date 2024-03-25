@@ -9,66 +9,102 @@
 
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
- 
+
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
- 
+
     --primary: 240 5.9% 10%;
     --primary-foreground: 0 0% 98%;
- 
+
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
- 
+
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
- 
+
     --accent: 240 4.8% 95.9%;
     --accent-foreground: 240 5.9% 10%;
- 
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
     --ring: 240 10% 3.9%;
- 
+
     --radius: 0.5rem;
-    
+    /* --background: 207 95% 8%;
+      --foreground: 201 83% 81%;
+      --muted: 207 12% 15%;
+      --muted-foreground: 207 12% 65%;
+      --popover: 207 95% 5%;
+      --popover-foreground: 201 83% 91%;
+      --card: 207 95% 6%;
+      --card-foreground: 201 83% 86%;
+      --border: 207 85% 13%;
+      --input: 207 85% 16%;
+      --primary: 205 85% 78%;
+      --primary-foreground: 205 85% 18%;
+      --secondary: 205 30% 25%;
+      --secondary-foreground: 205 30% 85%;
+      --accent: 207 95% 23%;
+      --accent-foreground: 207 95% 83%;
+      --destructive: 8 91% 59%;
+      --destructive-foreground: 0 0% 100%;
+      --ring: 205 85% 78%;
+      --radius: 0.5rem; */
   }
- 
+
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
- 
+
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
- 
+
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
- 
+
     --primary: 0 0% 98%;
     --primary-foreground: 240 5.9% 10%;
- 
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
- 
+
     --muted: 240 3.7% 15.9%;
     --muted-foreground: 240 5% 64.9%;
- 
+
     --accent: 240 3.7% 15.9%;
     --accent-foreground: 0 0% 98%;
- 
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
- 
+
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
-   
+    /* --background: 0 0% 100%;
+      --foreground: 211 69% 44%;
+      --muted: 0 12% 90%;
+      --muted-foreground: 0 12% 30%;
+      --popover: 0 0% 97%;
+      --popover-foreground: 211 69% 34%;
+      --card: 0 0% 98%;
+      --card-foreground: 211 69% 39%;
+      --border: 0 0% 95%;
+      --input: 0 0% 92%;
+      --primary: 0 0% 17%;
+      --primary-foreground: 0 0% 77%;
+      --secondary: 0 0% 75%;
+      --secondary-foreground: 0 0% 15%;
+      --accent: 0 0% 85%;
+      --accent-foreground: 0 0% 25%;
+      --destructive: 7 87% 31%;
+      --destructive-foreground: 7 87% 91%;
+      --ring: 0 0% 17%;
+      --radius: 0.5rem; */
   }
-  
 }
- 
+
 @layer base {
   * {
     @apply border-border;
@@ -76,16 +112,15 @@
   body {
     @apply bg-background text-foreground;
   }
-  
 }
 @layer utilities {
   /* Hide scrollbar for Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
-      display: none;
+    display: none;
   }
- /* Hide scrollbar for IE, Edge and Firefox */
+  /* Hide scrollbar for IE, Edge and Firefox */
   .no-scrollbar {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;  /* Firefox */
-}
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }

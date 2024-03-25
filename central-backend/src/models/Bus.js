@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 const BusSchema = new mongoose.Schema(
   {
-    // Permanant Fields
     busId: {
       type: String,
       require: true,
@@ -17,8 +16,6 @@ const BusSchema = new mongoose.Schema(
       require: true,
       immutable: true,
     },
-
-    //Temporary Field
     route: {},
     driver: {
       type: String,
