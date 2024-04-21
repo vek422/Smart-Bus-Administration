@@ -17,7 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { BACKEND_BASE_URL } from "../service";
 import { toast } from "sonner";
 const formSchema = z.object({
-  name: z.string().min(3, { message: "Name is Too Short" }),
+  firstName: z.string().min(3, { message: "Name is Too Short" }),
   gender: z.enum(["male", "female", "other"], {
     required_error: "You Need To Select this",
   }),
@@ -33,7 +33,7 @@ export default function AddUserForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
+      firstname: "",
       gender: "male",
       email: "",
       boardingPoint: "",
@@ -65,7 +65,7 @@ export default function AddUserForm() {
       >
         <FormField
           control={form.control}
-          name="name"
+          name="firstName"
           render={({ field }) => (
             <FormItem className="w-1/2">
               <FormLabel>Name</FormLabel>

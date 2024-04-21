@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import { Card } from "./ui/card";
 import { useState, useEffect } from "react";
 
@@ -10,8 +11,11 @@ export default function TimeWidget() {
     return () => clearInterval(intervaleId);
   }, []);
   return (
-    <h1 className="text-5xl font-medium text-center">{`${date.getHours()}:${
-      date.getMinutes() < 10 ? "0" : ""
-    }${date.getMinutes()}`}</h1>
+    <>
+      <h1 className="text-5xl font-medium text-center">{`${date.getHours()}:${
+        date.getMinutes() < 10 ? "0" : ""
+      }${date.getMinutes()}`}</h1>
+      <h2>{format(date, "EEEE dd MMMM yyyy")}</h2>
+    </>
   );
 }

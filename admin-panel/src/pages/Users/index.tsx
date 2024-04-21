@@ -1,105 +1,64 @@
-import Nav from "@/components/Nav";
-import { SideNav } from "@/components/SideNav";
-import UserListcard from "@/components/UserListCard";
-
+import SideNav from "@/components/SideNav";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { ListFilter, Search } from "lucide-react";
+import { columns, UserInfo } from "./columns";
+import { DataTable } from "./data-table";
 import { Separator } from "@/components/ui/separator";
-import { Search, Ticket, UserRoundCheck, Users2 } from "lucide-react";
-import UserInformation from "./UserInformationCard";
-import { useEffect, useState } from "react";
-import useFetchUserList from "@/hooks/useFetchUserList";
-export default function Users() {
-  const [selected, setSelected] = useState(0);
-  const { fetchRecords, users, isLoading, error } = useFetchUserList();
-  const [filteredList, setFilteredList] = useState(users);
-  const [searchValue, setSearchValue] = useState("");
-  const [selectedUser, setSelectedUser] = useState(0);
-  useEffect(() => {
-    const filtered = users.filter((user) =>
-      user.name.toLowerCase().includes(searchValue.toLowerCase())
-    );
-    setFilteredList(filtered);
-  }, [searchValue, users]);
 
-  if (isLoading) {
-    return (
-      <div>
-        <p>Loading...</p>
-      </div>
-    );
+const users: UserInfo[] = (() => {
+  let data = [];
+  for (let i = 0; i < 100; i++) {
+    data.push({
+      uid: `US0${i}`,
+      name: "User",
+      boardingPoint: "Shirdi",
+      passStatus: "active",
+    });
   }
-
-  const links = [
-    {
-      title: "All Users",
-      label: "",
-      icon: Users2,
-      onClick: function () {
-        setSelected(0);
-      },
-    },
-    {
-      title: "Active Users",
-      label: "",
-      icon: UserRoundCheck,
-      onClick: function () {
-        setSelected(1);
-      },
-    },
-    {
-      title: "Users With Pass",
-      label: "",
-      icon: Ticket,
-      onClick: function () {
-        setSelected(2);
-      },
-    },
-    {
-      title: "User Approvals",
-      label: "",
-      icon: Users2,
-      onClick: function () {
-        setSelected(3);
-      },
-    },
-  ];
-
+  return data;
+})();
+export default function Users() {
   return (
-    <div className="max-w-screen max-h-screen overflow-hidden">
-      <Nav />
-      <div className="flex border h-[90.5vh]">
-        <div className="w-2/12">
-          <SideNav isCollapsed={false} links={links} selected={selected} />
-        </div>
-        <div className="w-5/12 border flex flex-col gap-5">
-          <h1 className="text-2xl font-semibold px-4 pt-4">
-            {links[selected].title}
-          </h1>
-          <Separator />
-          <div className="px-5">
-            <div className="relative">
-              <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input
-                placeholder="Search"
-                className="pl-8"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-              />
+    <div className="w-full h-screen bg-muted/40 pl-14">
+      <SideNav />
+      <header className="flex p-4 w-full justify-between items-center">
+        <h1 className="text-2xl font-semibold">Users</h1>
+        <Avatar>
+          <AvatarFallback>VK</AvatarFallback>
+        </Avatar>
+      </header>
+      <main className="grid grid-cols-4 px-4">
+        <div className="col-span-3 flex flex-col gap-2">
+          <div className="flex justify-between">
+            <div>
+              <div className="relative ml-auto flex-1 md:grow-0">
+                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input
+                  type="search"
+                  placeholder="Search..."
+                  className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
+                />
+              </div>
             </div>
+            <Button variant={"outline"} className="gap-1">
+              <ListFilter className="h-3.5 w-3.5" />
+              <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                Filter
+              </span>
+            </Button>
           </div>
-          <div className="p-2 flex flex-col h-full gap-2 overflow-scroll no-scrollbar">
-            {filteredList.map((user, index) => (
-              <UserListcard
-                userinfo={user}
-                handleOnClick={() => setSelectedUser(index)}
-              />
-            ))}
-          </div>
+          <Card className="p-2">
+            <div className="p-4 ">
+              <h2 className="text-xl font-semibold">All Users</h2>
+            </div>
+            <Separator />
+            <DataTable columns={columns} data={users} />
+          </Card>
         </div>
-        <div className="w-5/12 border flex flex-col gap-5 items-center p-2 justify-center">
-          <UserInformation userInfo={users[selectedUser]} />
-        </div>
-      </div>
+      </main>
     </div>
   );
 }

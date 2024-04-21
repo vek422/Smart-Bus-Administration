@@ -1,6 +1,4 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
-
 import "./index.css";
 import "./assets/fonts/css/author.css";
 import "./assets/fonts/css/chillax.css";
@@ -10,10 +8,10 @@ import { ThemeProvider } from "./components/theme-provider.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/Login/index.tsx";
 import Register from "./pages/Register/index.tsx";
-import DashBoard from "./pages/Dashboard/Dashboard.tsx";
+import DashBoard from "./pages/Dashboard";
+import Buses from "./pages/Bus/index.tsx";
 import Users from "./pages/Users/index.tsx";
-import Buses from "./pages/Buses/index.tsx";
-import AddUser from "./pages/AddUser/index.tsx";
+import Route from "@/pages/Route";
 import { Toaster } from "./components/ui/sonner.tsx";
 
 const router = createBrowserRouter([
@@ -30,24 +28,22 @@ const router = createBrowserRouter([
     element: <Register />,
   },
   {
-    path: "/users",
-    element: <Users />,
-  },
-  {
-    path: "/buses",
+    path: "/bus",
     element: <Buses />,
   },
   {
-    path: "/users/add",
-    element: <AddUser />,
+    path: "/user",
+    element: <Users />,
+  },
+  {
+    path: "/route",
+    element: <Route />,
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  // <React.StrictMode>
   <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
     <RouterProvider router={router} />
     <Toaster />
   </ThemeProvider>
-  // </React.StrictMode>
 );

@@ -41,9 +41,11 @@ const UserSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Pass",
   },
-  travelLogs: [
-    { type: mongoose.Schema.Types.ObjectId, ref: "user-travel-log" },
-  ],
+  travelLogs: {
+    type: Map,
+    of: { type: mongoose.Schema.Types.ObjectId, ref: "user-travel-log" },
+    default: {},
+  },
 });
 const User = mongoose.model("User", UserSchema);
 export default User;

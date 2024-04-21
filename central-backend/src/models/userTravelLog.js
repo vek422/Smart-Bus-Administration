@@ -6,12 +6,16 @@ const userTravelLogSchema = new mongoose.Schema({
     required: true,
   },
   departureDetails: {
-    type: String,
-    required: true,
+    time: { type: mongoose.Schema.Types.Date, required: true },
+    destination: { type: String, required: true },
   },
   destination: {
+    time: { type: mongoose.Schema.Types.Date, required: true },
+    destination: { type: String, required: true },
+  },
+  remark: {
     type: String,
-    required: true,
+    default: "",
   },
 });
 
